@@ -6,6 +6,7 @@ Paclet[
     Name -> "diyPaclet",
     Version -> "0.0.1",
     MathematicaVersion -> "7+",
+    Creator -> "ERWS",
     Loading -> "Automatic",
     Root -> "diyPaclet",
     Extensions -> 
