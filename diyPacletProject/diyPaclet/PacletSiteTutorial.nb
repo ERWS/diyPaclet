@@ -1,0 +1,1602 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     63516,       1594]
+NotebookOptionsPosition[     59021,       1431]
+NotebookOutlinePosition[     59368,       1446]
+CellTagsIndexPosition[     59325,       1443]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Paclet Site Tutorial", "Title",
+ CellChangeTimes->{{3.688930391316283*^9, 3.688930399052228*^9}}],
+
+Cell["\<\
+This tutorial shows how to create your own Paclet site. 
+If you deploy code to other people you can use the Paclet system to allow \
+your application to check for code or data updates.
+This is useful if you have bugs that have been fixed, new features added or \
+data that has changed or been updated.\
+\>", "Text",
+ CellChangeTimes->{{3.688930375448879*^9, 3.688930384469224*^9}, {
+  3.6889325141198645`*^9, 3.6889325159505863`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Create a Paclet Site", "Section",
+ CellChangeTimes->{{3.6887020615429735`*^9, 3.688702075214884*^9}, {
+  3.6889234998798113`*^9, 3.6889235002077923`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PacletSites", "[", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"PacletSite", "[", 
+   RowBox[{"\<\"http://pacletserver.wolfram.com\"\>", 
+    ",", "\<\"Wolfram Research Paclet Server\"\>", ",", 
+    RowBox[{"\<\"Local\"\>", "\[Rule]", "False"}]}], "]"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.688705637372305*^9, 3.6887066657594285`*^9, 3.6887068428642187`*^9, {
+   3.688751112663277*^9, 3.6887511223522415`*^9}, 3.688751175859476*^9, 
+   3.6887820303139315`*^9, {3.688788248662834*^9, 3.6887882695733733`*^9}, 
+   3.688791503429101*^9, 3.6888419728747454`*^9, 3.6888421475222015`*^9, 
+   3.688842966956295*^9, {3.6888481049610133`*^9, 3.688848122010315*^9}, 
+   3.688923469148955*^9, 3.6889285092653365`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PacletSiteRemove", "[", 
+  "\"\<https://github.com/ERWS/diyPaclet/releases/download/v1.0/\>\"", 
+  "]"}]], "Input",
+ CellChangeTimes->{3.688705679459443*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "PacletSiteRemove","nosite",
+   "\"Site \\!\\(\\*RowBox[{\\\"\\\\\\\"https://github.com/ERWS/diyPaclet/\
+releases/download/v1.0/\\\\\\\"\\\"}]\\) is not an existing Paclet site.\"",2,
+   2,1,21206188291783348492,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.6889285116238947`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"PacletSite", "[", 
+   RowBox[{"\<\"http://pacletserver.wolfram.com\"\>", 
+    ",", "\<\"Wolfram Research Paclet Server\"\>", ",", 
+    RowBox[{"\<\"Local\"\>", "\[Rule]", "False"}]}], "]"}], "}"}]], "Output",
+ CellChangeTimes->{3.6887056419298944`*^9, 3.6887056808144913`*^9, 
+  3.688751179096925*^9, 3.6887811084743185`*^9, 3.688782035096052*^9, 
+  3.688788251891347*^9, 3.6888419744787827`*^9, 3.688842151524587*^9, 
+  3.6889234731349754`*^9, 3.68892851162643*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PacletSites", "[", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"PacletSite", "[", 
+   RowBox[{"\<\"http://pacletserver.wolfram.com\"\>", 
+    ",", "\<\"Wolfram Research Paclet Server\"\>", ",", 
+    RowBox[{"\<\"Local\"\>", "\[Rule]", "False"}]}], "]"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6887056674457326`*^9, 3.6887056867736154`*^9}, 
+   3.688751110104253*^9, 3.6887511815583134`*^9, 3.688782037707309*^9, 
+   3.688842154447177*^9, 3.6889234797744713`*^9, 3.688928514429601*^9}]
+}, Open  ]],
+
+Cell["\<\
+
+I am going to use a GitHub release page for my site.\
+\>", "Text",
+ CellChangeTimes->{{3.6889251720793066`*^9, 3.688925197363566*^9}, 
+   3.6889325458107333`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "sitepathpath", "=", 
+   "\"\<https://github.com/ERWS/diyPaclet/releases/download/v1.0/\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"mysite", "=", 
+   RowBox[{"PacletSiteAdd", "[", 
+    RowBox[{"sitepathpath", ",", "\"\<ERWS\>\"", ",", 
+     RowBox[{"\"\<Local\>\"", "\[Rule]", "False"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"PacletSites", "[", "]"}]}], "Input",
+ CellChangeTimes->{{3.6887021386882267`*^9, 3.6887021410878153`*^9}, {
+  3.6889235113434625`*^9, 3.68892353893229*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"PacletSite", "[", 
+    RowBox[{"\<\"http://pacletserver.wolfram.com\"\>", 
+     ",", "\<\"Wolfram Research Paclet Server\"\>", ",", 
+     RowBox[{"\<\"Local\"\>", "\[Rule]", "False"}]}], "]"}], ",", 
+   RowBox[{"PacletSite", "[", 
+    RowBox[{"\<\"https://github.com/ERWS/diyPaclet/releases/download/v1.0/\"\>\
+", ",", "\<\"ERWS\"\>", ",", 
+     RowBox[{"\<\"Local\"\>", "\[Rule]", "False"}]}], "]"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.6889235407070107`*^9, 3.688928517725273*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Create Paclet Site Data", "Section",
+ CellChangeTimes->{{3.6887023919316916`*^9, 3.688702401531273*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Creating Paclet data for the site.", "Subsection",
+ CellChangeTimes->{{3.6889239682030897`*^9, 3.688923991466789*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PacletUninstall", "[", "\"\<diyPaclet\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.6887905259380918`*^9, 3.688790540017192*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "PacletUninstall","notfound",
+   "\"Paclet \\!\\(\\*RowBox[{\\\"\\\\\\\"diyPaclet\\\\\\\"\\\"}]\\) not \
+found.\"",2,7,2,21206188291783348492,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.688923569850436*^9, 3.688928520487363*^9}],
+
+Cell[BoxData["$Failed"], "Output",
+ CellChangeTimes->{3.688923569852971*^9, 3.6889285205031805`*^9}]
+}, Open  ]],
+
+Cell["\<\
+PacletSite data has head PacletSite and contains Paclets. Each paclet has \
+head Paclet.To make a site you need at least one Paclet.\
+\>", "Text",
+ CellChangeTimes->{{3.6887025238584113`*^9, 3.6887025417776136`*^9}, {
+   3.6887025897377486`*^9, 3.6887026138736343`*^9}, {3.6889236711980286`*^9, 
+   3.6889236915099845`*^9}, {3.6889252259424033`*^9, 3.6889252265268574`*^9}, 
+   3.688932573123657*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Retrieving a paclet to put into the PacletSite \
+object", "Subsubsection"]], "Subsection",
+ CellChangeTimes->{{3.6887027062885313`*^9, 3.6887027276560917`*^9}, 
+   3.688923696349987*^9, {3.6889237409652233`*^9, 3.68892375975708*^9}}],
+
+Cell["Get the paclet", "Text",
+ CellChangeTimes->{{3.688925514275859*^9, 3.6889255886591473`*^9}, 
+   3.688926105308099*^9, {3.688928537389965*^9, 3.688928540486268*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"diypacpath", "=", 
+   RowBox[{"First", "@", 
+    RowBox[{"URLDownload", "[", 
+     RowBox[{
+     "\"\<https://github.com/ERWS/diyPaclet/releases/download/v1.0/diyPaclet-\
+0.0.1.paclet\>\"", ",", 
+      RowBox[{"URLDownload", "[", 
+       RowBox[{"\"\<http://wolfram.com\>\"", ",", 
+        RowBox[{"FileNameJoin", "[", 
+         RowBox[{"{", 
+          RowBox[{
+          "$TemporaryDirectory", ",", "\"\<diyPaclet-0.0.1.paclet\>\""}], 
+          "}"}], "]"}]}], "]"}]}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"diypac", "=", 
+  RowBox[{"PacletInstall", "[", "diypacpath", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.688926109058025*^9, 3.688926146734723*^9}, {
+  3.688926412533055*^9, 3.688926434766465*^9}, {3.6889305659883*^9, 
+  3.688930576480856*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\2moro\\\\AppData\\\\Local\\\\Temp\\\\\
+diyPaclet-0.0.1.paclet\"\>"], "Output",
+ CellChangeTimes->{{3.6889261280285835`*^9, 3.6889261499290695`*^9}, 
+   3.6889264419809613`*^9, 3.6889285531984663`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Investigating the paclet content.", "Subsubsection",
+ CellChangeTimes->{{3.688923795100791*^9, 3.6889238194608464`*^9}, {
+  3.6889252494870076`*^9, 3.6889252564065*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"diypac", "/.", 
+  RowBox[{
+   RowBox[{"Paclet", "[", "x__", "]"}], "\[RuleDelayed]", 
+   RowBox[{"<|", "x", "|>"}]}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"Name\"\>", "\[Rule]", "\<\"diyPaclet\"\>"}], ",", 
+   RowBox[{"\<\"Version\"\>", "\[Rule]", "\<\"0.0.1\"\>"}], ",", 
+   RowBox[{"\<\"MathematicaVersion\"\>", "\[Rule]", "\<\"7+\"\>"}], ",", 
+   RowBox[{"\<\"Creator\"\>", "\[Rule]", "\<\"ERWS\"\>"}], ",", 
+   RowBox[{"\<\"Loading\"\>", "\[Rule]", "\<\"Automatic\"\>"}], ",", 
+   RowBox[{"\<\"Root\"\>", "\[Rule]", "\<\"diyPaclet\"\>"}], ",", 
+   RowBox[{"\<\"Extensions\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\<\"Kernel\"\>", ",", 
+        RowBox[{"\<\"Context\"\>", "\[Rule]", "\<\"diyPaclet`\"\>"}]}], "}"}],
+       ",", 
+      RowBox[{"{", 
+       RowBox[{"\<\"Documentation\"\>", ",", 
+        RowBox[{"\<\"Language\"\>", "\[Rule]", "\<\"English\"\>"}], ",", 
+        RowBox[{"\<\"MainPage\"\>", 
+         "\[Rule]", "\<\"Guides/diyPacletGuide\"\>"}]}], "}"}]}], "}"}]}], 
+   ",", 
+   RowBox[{"\<\"Location\"\>", 
+    "\[Rule]", "\<\"C:\\\\Users\\\\2moro\\\\AppData\\\\Roaming\\\\Mathematica\
+\\\\Paclets\\\\Repository\\\\diyPaclet\"\>"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{3.6887898200907907`*^9, 3.6887905499113894`*^9, 
+  3.6889285615972877`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Modifying the location", "Subsubsection",
+ CellChangeTimes->{{3.688923833004608*^9, 3.688923841588318*^9}, {
+  3.6889238733383417`*^9, 3.688923881796297*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pacassoc", "=", 
+  RowBox[{"Append", "[", 
+   RowBox[{
+    RowBox[{"diypac", "/.", 
+     RowBox[{
+      RowBox[{"Paclet", "[", "x__", "]"}], "\[RuleDelayed]", 
+      RowBox[{"<|", "x", "|>"}]}]}], ",", 
+    RowBox[{"\"\<Location\>\"", "\[Rule]", "sitepathpath"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6887033854900565`*^9, 3.6887034348342934`*^9}, {
+  3.6887035412429743`*^9, 3.688703548593361*^9}, {3.688782210217712*^9, 
+  3.688782236680825*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"Name\"\>", "\[Rule]", "\<\"diyPaclet\"\>"}], ",", 
+   RowBox[{"\<\"Version\"\>", "\[Rule]", "\<\"0.0.1\"\>"}], ",", 
+   RowBox[{"\<\"MathematicaVersion\"\>", "\[Rule]", "\<\"7+\"\>"}], ",", 
+   RowBox[{"\<\"Creator\"\>", "\[Rule]", "\<\"ERWS\"\>"}], ",", 
+   RowBox[{"\<\"Loading\"\>", "\[Rule]", "\<\"Automatic\"\>"}], ",", 
+   RowBox[{"\<\"Root\"\>", "\[Rule]", "\<\"diyPaclet\"\>"}], ",", 
+   RowBox[{"\<\"Extensions\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\<\"Kernel\"\>", ",", 
+        RowBox[{"\<\"Context\"\>", "\[Rule]", "\<\"diyPaclet`\"\>"}]}], "}"}],
+       ",", 
+      RowBox[{"{", 
+       RowBox[{"\<\"Documentation\"\>", ",", 
+        RowBox[{"\<\"Language\"\>", "\[Rule]", "\<\"English\"\>"}], ",", 
+        RowBox[{"\<\"MainPage\"\>", 
+         "\[Rule]", "\<\"Guides/diyPacletGuide\"\>"}]}], "}"}]}], "}"}]}], 
+   ",", 
+   RowBox[{"\<\"Location\"\>", 
+    "\[Rule]", "\<\"https://github.com/ERWS/diyPaclet/releases/download/v1.0/\
+\"\>"}]}], "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{{3.6887033929763365`*^9, 3.688703435358987*^9}, 
+   3.688703549840681*^9, 3.6887821143703146`*^9, 3.688782238743704*^9, 
+   3.688928566079099*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"modifiedpac", "=", 
+  RowBox[{"Paclet", "@@", 
+   RowBox[{"Normal", "@", "pacassoc"}]}]}]], "Input",
+ CellChangeTimes->{{3.6887031079045095`*^9, 3.688703115316977*^9}, {
+  3.6887035558244967`*^9, 3.6887036283770432`*^9}, {3.6887036610244026`*^9, 
+  3.6887036966320677`*^9}, {3.688782249360236*^9, 3.6887822543030863`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "Paclet", "[", "\<\"diyPaclet\"\>", ",", "\<\"0.0.1\"\>", ",", "<>", "]"}],
+  PacletManager`Paclet[
+  "Name" -> "diyPaclet", "Version" -> "0.0.1", "MathematicaVersion" -> "7+", 
+   "Creator" -> "ERWS", "Loading" -> "Automatic", "Root" -> "diyPaclet", 
+   "Extensions" -> {{"Kernel", "Context" -> "diyPaclet`"}, {
+     "Documentation", "Language" -> "English", "MainPage" -> 
+      "Guides/diyPacletGuide"}}, "Location" -> 
+   "https://github.com/ERWS/diyPaclet/releases/download/v1.0/"]]], "Output",
+ CellChangeTimes->{{3.6887036683748465`*^9, 3.688703697217366*^9}, 
+   3.6887822557439613`*^9, 3.6889285717633953`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"modifiedpac", "/.", 
+  RowBox[{
+   RowBox[{"Paclet", "[", "x__", "]"}], "\[RuleDelayed]", 
+   RowBox[{"<|", "x", "|>"}]}]}]], "Input",
+ CellChangeTimes->{{3.6887822706322117`*^9, 3.688782279527979*^9}, {
+  3.688923928268003*^9, 3.688923936750778*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"Name\"\>", "\[Rule]", "\<\"diyPaclet\"\>"}], ",", 
+   RowBox[{"\<\"Version\"\>", "\[Rule]", "\<\"0.0.1\"\>"}], ",", 
+   RowBox[{"\<\"MathematicaVersion\"\>", "\[Rule]", "\<\"7+\"\>"}], ",", 
+   RowBox[{"\<\"Creator\"\>", "\[Rule]", "\<\"ERWS\"\>"}], ",", 
+   RowBox[{"\<\"Loading\"\>", "\[Rule]", "\<\"Automatic\"\>"}], ",", 
+   RowBox[{"\<\"Root\"\>", "\[Rule]", "\<\"diyPaclet\"\>"}], ",", 
+   RowBox[{"\<\"Extensions\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\<\"Kernel\"\>", ",", 
+        RowBox[{"\<\"Context\"\>", "\[Rule]", "\<\"diyPaclet`\"\>"}]}], "}"}],
+       ",", 
+      RowBox[{"{", 
+       RowBox[{"\<\"Documentation\"\>", ",", 
+        RowBox[{"\<\"Language\"\>", "\[Rule]", "\<\"English\"\>"}], ",", 
+        RowBox[{"\<\"MainPage\"\>", 
+         "\[Rule]", "\<\"Guides/diyPacletGuide\"\>"}]}], "}"}]}], "}"}]}], 
+   ",", 
+   RowBox[{"\<\"Location\"\>", 
+    "\[Rule]", "\<\"https://github.com/ERWS/diyPaclet/releases/download/v1.0/\
+\"\>"}]}], "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{3.688928576539892*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Cleanup", "Subsubsection",
+ CellChangeTimes->{{3.688928617029279*^9, 3.688928618965293*^9}}],
+
+Cell[BoxData[
+ RowBox[{"PacletUninstall", "[", "\"\<diyPaclet\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.6889284705757885`*^9, 3.688928490607506*^9}, {
+  3.6889285970877247`*^9, 3.688928597598505*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Making the Paclet site", "Section",
+ CellChangeTimes->{{3.688703824069603*^9, 3.688703832205201*^9}, {
+  3.688925624851028*^9, 3.6889256270749855`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Add the PacletSite head", "Subsubsection",
+ CellChangeTimes->{{3.6889240315224915`*^9, 3.688924048858245*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pacletsitenew", "=", 
+  RowBox[{"PacletSite", "[", "modifiedpac", "]"}]}]], "Input",
+ CellChangeTimes->{{3.6887038626013136`*^9, 3.6887038907903814`*^9}, 
+   3.688782373727503*^9}],
+
+Cell[BoxData[
+ RowBox[{"PacletSite", "[", 
+  InterpretationBox[
+   RowBox[{
+   "Paclet", "[", "\<\"diyPaclet\"\>", ",", "\<\"0.0.1\"\>", ",", "<>", "]"}],
+   PacletManager`Paclet[
+   "Name" -> "diyPaclet", "Version" -> "0.0.1", "MathematicaVersion" -> "7+", 
+    "Creator" -> "ERWS", "Loading" -> "Automatic", "Root" -> "diyPaclet", 
+    "Extensions" -> {{"Kernel", "Context" -> "diyPaclet`"}, {
+      "Documentation", "Language" -> "English", "MainPage" -> 
+       "Guides/diyPacletGuide"}}, "Location" -> 
+    "https://github.com/ERWS/diyPaclet/releases/download/v1.0/"]], 
+  "]"}]], "Output",
+ CellChangeTimes->{3.6887823746454544`*^9, 3.688928627473013*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Convert to text", "Subsubsection",
+ CellChangeTimes->{{3.688703929636613*^9, 3.688703935380533*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pacletsitetext", "=", 
+  RowBox[{"ToString", "[", 
+   RowBox[{"pacletsitenew", ",", "InputForm"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.688704017470282*^9, 3.68870402758226*^9}, {
+  3.688782390287809*^9, 3.6887824028834333`*^9}}],
+
+Cell[BoxData["\<\"PacletSite[Paclet[\\\"Name\\\" -> \\\"diyPaclet\\\", \
+\\\"Version\\\" -> \\\"0.0.1\\\", \\\"MathematicaVersion\\\" -> \\\"7+\\\", \
+\\\"Creator\\\" -> \\\"ERWS\\\", \\\"Loading\\\" -> \\\"Automatic\\\", \
+\\\"Root\\\" -> \\\"diyPaclet\\\", \\\"Extensions\\\" -> {{\\\"Kernel\\\", \\\
+\"Context\\\" -> \\\"diyPaclet`\\\"}, {\\\"Documentation\\\", \
+\\\"Language\\\" -> \\\"English\\\", \\\"MainPage\\\" -> \
+\\\"Guides/diyPacletGuide\\\"}}, \\\"Location\\\" -> \
+\\\"https://github.com/ERWS/diyPaclet/releases/download/v1.0/\\\"]]\"\>"], \
+"Output",
+ CellChangeTimes->{{3.6887823918056793`*^9, 3.6887824068728533`*^9}, 
+   3.688928637422412*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Create PacletSite.m and write the encoded string data", "Subsubsection",
+ CellChangeTimes->{{3.6889240723300114`*^9, 3.68892415080136*^9}}],
+
+Cell["\<\
+Some processing is required to create a zipped archive file with a.mz \
+extension\
+\>", "Text",
+ CellChangeTimes->{{3.6889326120879116`*^9, 3.6889326196557493`*^9}}],
+
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{"newfile", "=", 
+   RowBox[{"CreateFile", "[", 
+    RowBox[{"FileNameJoin", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<Pacsite1\>\"", ",", 
+       "\"\<PacletSite.m\>\""}], "}"}], "]"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.688784820284244*^9, {3.6887852026454268`*^9, 3.6887852080854874`*^9}, {
+   3.6887868616139116`*^9, 3.688786866721698*^9}, {3.688787332942251*^9, 
+   3.688787338136845*^9}, {3.6887873925618305`*^9, 3.688787428200859*^9}, 
+   3.6887876557660613`*^9, {3.6887877164771924`*^9, 3.6887877438927755`*^9}, {
+   3.6887877779097247`*^9, 3.688787832436799*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{3.688704007268318*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"s", "=", 
+  RowBox[{"OpenWrite", "[", 
+   RowBox[{"newfile", ",", 
+    RowBox[{"CharacterEncoding", "\[Rule]", "\"\<UTF8\>\""}]}], "]"}]}], "\n", 
+ RowBox[{"WriteString", "[", 
+  RowBox[{"s", ",", "pacletsitetext"}], "]"}], "\n", 
+ RowBox[{"Close", "[", "s", "]"}]}], "Input",
+ CellChangeTimes->{{3.688704034955841*^9, 3.6887040829166136`*^9}, 
+   3.6887041467884207`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   TagBox["OutputStream",
+    "SummaryHead"], "[", 
+   DynamicModuleBox[{Typeset`open$$ = False}, 
+    PanelBox[
+     PaneSelectorBox[{False->GridBox[{
+        {
+         PaneBox[
+          ButtonBox[
+           
+           DynamicBox[FEPrivate`FrontEndResource[
+            "FEBitmaps", "SquarePlusIconMedium"],
+            ImageSizeCache->{12., {0., 12.}}],
+           Appearance->None,
+           ButtonFunction:>(Typeset`open$$ = True),
+           Evaluator->Automatic,
+           Method->"Preemptive"],
+          Alignment->{Center, Center},
+          
+          ImageSize->
+           Dynamic[{
+            Automatic, 3.5 CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+             Magnification]}]], 
+         GraphicsBox[
+          {Thickness[0.0016806722689075631`], 
+           {FaceForm[{GrayLevel[0.93], Opacity[1.]}], 
+            FilledCurveBox[{{{1, 4, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 0}, {1, 
+             3, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 0}}}, {{{25.499999999999996`,
+              2.5}, {25.499999999999996`, 1.3953100000000003`}, {
+             24.604699999999998`, 0.49999999999999994`}, {23.5, 
+             0.49999999999999994`}, {2.5, 0.49999999999999994`}, {
+             1.3953100000000003`, 0.49999999999999994`}, {
+             0.49999999999999994`, 1.3953100000000003`}, {
+             0.49999999999999994`, 2.5}, {0.49999999999999994`, 23.5}, {
+             0.49999999999999994`, 24.604699999999998`}, {1.3953100000000003`,
+              25.499999999999996`}, {2.5, 25.499999999999996`}, {23.5, 
+             25.499999999999996`}, {24.604699999999998`, 
+             25.499999999999996`}, {25.499999999999996`, 
+             24.604699999999998`}, {25.499999999999996`, 23.5}, {
+             25.499999999999996`, 2.5}}}]}, 
+           {RGBColor[0.699951, 0.699951, 0.699951], Opacity[1.], 
+            JoinForm[{ElisionsDump`Miter, 10.}], 
+            JoinedCurveBox[{{{1, 4, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 0}, {1, 
+             3, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 0}}}, {{{25.499999999999996`,
+              2.5}, {25.499999999999996`, 1.3953100000000003`}, {
+             24.604699999999998`, 0.49999999999999994`}, {23.5, 
+             0.49999999999999994`}, {2.5, 0.49999999999999994`}, {
+             1.3953100000000003`, 0.49999999999999994`}, {
+             0.49999999999999994`, 1.3953100000000003`}, {
+             0.49999999999999994`, 2.5}, {0.49999999999999994`, 23.5}, {
+             0.49999999999999994`, 24.604699999999998`}, {1.3953100000000003`,
+              25.499999999999996`}, {2.5, 25.499999999999996`}, {23.5, 
+             25.499999999999996`}, {24.604699999999998`, 
+             25.499999999999996`}, {25.499999999999996`, 
+             24.604699999999998`}, {25.499999999999996`, 23.5}, {
+             25.499999999999996`, 2.5}}}]}, 
+           {FaceForm[{RGBColor[0.5, 0.5, 0.5], Opacity[1.]}], 
+            FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {0, 
+             1, 0}, {1, 3, 3}, {1, 3, 3}}}, {{{3.52539, 
+             1.0035199999999997`}, {2.5250000000000004`, 
+             1.0035199999999997`}, {1.6828099999999997`, 
+             1.0035199999999997`}, {0.9999999999999999, 
+             1.6863299999999997`}, {0.9999999999999999, 
+             2.5285199999999994`}, {0.9999999999999999, 
+             23.474999999999998`}, {0.9999999999999999, 
+             24.317199999999996`}, {1.6828099999999997`, 
+             24.999999999999996`}, {2.5250000000000004`, 
+             24.999999999999996`}, {3.52539, 24.999999999999996`}, {3.52539, 
+             24.999999999999993`}, {5.523440000000001, 22.421099999999996`}, {
+             5.523440000000001, 13.0039}, {5.523440000000001, 
+             3.5867199999999992`}, {3.52539, 1.0035199999999997`}, {3.52539, 
+             1.0035199999999997`}}}], 
+            FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 
+             1, 0}, {0, 1, 0}}}, {{{22.4977, 12.9016}, {17.740599999999997`, 
+             16.8398}, {17.740599999999997`, 14.856599999999998`}, {
+             19.980900000000002`, 12.947299999999997`}, {17.740599999999997`, 
+             10.946100000000001`}, {17.740599999999997`, 8.96289}, {22.4977, 
+             12.9016}}}]}, 
+           {FaceForm[{RGBColor[
+            0.46093800000000007`, 0.46093800000000007`, 0.46093800000000007`],
+             Opacity[1.]}], 
+            FilledCurveBox[{{{1, 4, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}}}, {{{
+             9.202339999999998, 12.8969}, {9.202339999999998, 
+             12.335499999999998`}, {8.747660000000002, 11.880899999999999`}, {
+             8.186329999999998, 11.880899999999999`}, {7.624999999999999, 
+             11.880899999999999`}, {7.169920000000001, 12.335499999999998`}, {
+             7.169920000000001, 12.8969}, {7.169920000000001, 
+             13.458200000000003`}, {7.624999999999999, 13.9133}, {
+             8.186329999999998, 13.9133}, {8.747660000000002, 13.9133}, {
+             9.202339999999998, 13.458200000000003`}, {9.202339999999998, 
+             12.8969}}}], 
+            FilledCurveBox[{{{1, 4, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}}}, {{{
+             12.6227, 12.8969}, {12.6227, 12.335499999999998`}, {
+             12.167599999999998`, 11.880899999999999`}, {11.606200000000001`, 
+             11.880899999999999`}, {11.0449, 11.880899999999999`}, {
+             10.589799999999999`, 12.335499999999998`}, {10.589799999999999`, 
+             12.8969}, {10.589799999999999`, 13.458200000000003`}, {11.0449, 
+             13.9133}, {11.606200000000001`, 13.9133}, {12.167599999999998`, 
+             13.9133}, {12.6227, 13.458200000000003`}, {12.6227, 12.8969}}}], 
+            FilledCurveBox[{{{1, 4, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}}}, {{{
+             16.042600000000004`, 12.8969}, {16.042600000000004`, 
+             12.335499999999998`}, {15.587499999999999`, 
+             11.880899999999999`}, {15.026199999999998`, 
+             11.880899999999999`}, {14.464799999999997`, 
+             11.880899999999999`}, {14.010199999999998`, 
+             12.335499999999998`}, {14.010199999999998`, 12.8969}, {
+             14.010199999999998`, 13.458200000000003`}, {14.464799999999997`, 
+             13.9133}, {15.026199999999998`, 13.9133}, {15.587499999999999`, 
+             13.9133}, {16.042600000000004`, 13.458200000000003`}, {
+             16.042600000000004`, 12.8969}}}]}},
+          AspectRatio->1,
+          Axes->False,
+          Background->GrayLevel[0.5],
+          Frame->True,
+          FrameStyle->Directive[
+            Thickness[Tiny], 
+            GrayLevel[0.7]],
+          FrameTicks->None,
+          ImageSize->{Automatic, 
+            Dynamic[
+            3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+              Magnification])]}], GridBox[{
+           {
+            RowBox[{
+             TagBox["\<\"Name: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox[
+              StyleBox[
+               PaneBox["\<\"PacletSite.m\"\>",
+                BaselinePosition->Baseline,
+                ContentPadding->False,
+                FrameMargins->0,
+                ImageSize->{{1, 300}, Automatic},
+                StripOnInput->True],
+               LineBreakWithin->False],
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Unique ID: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox["3",
+              "SummaryItem"]}]}
+          },
+          AutoDelete->False,
+          
+          BaseStyle->{
+           ShowStringCharacters -> False, NumberMarks -> False, 
+            PrintPrecision -> 3, ShowSyntaxStyles -> False},
+          GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Automatic}}},
+          
+          GridBoxItemSize->{
+           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+          GridBoxSpacings->{"Columns" -> {{2}}, "Rows" -> {{Automatic}}}]}
+       },
+       AutoDelete->False,
+       BaselinePosition->{1, 1},
+       GridBoxAlignment->{"Rows" -> {{Top}}},
+       GridBoxItemSize->{
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], True->GridBox[{
+        {
+         PaneBox[
+          ButtonBox[
+           
+           DynamicBox[FEPrivate`FrontEndResource[
+            "FEBitmaps", "SquareMinusIconMedium"]],
+           Appearance->None,
+           ButtonFunction:>(Typeset`open$$ = False),
+           Evaluator->Automatic,
+           Method->"Preemptive"],
+          Alignment->{Center, Center},
+          
+          ImageSize->
+           Dynamic[{
+            Automatic, 3.5 CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+             Magnification]}]], 
+         GraphicsBox[
+          {Thickness[0.0016806722689075631`], 
+           {FaceForm[{GrayLevel[0.93], Opacity[1.]}], 
+            FilledCurveBox[{{{1, 4, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 0}, {1, 
+             3, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 0}}}, {{{25.499999999999996`,
+              2.5}, {25.499999999999996`, 1.3953100000000003`}, {
+             24.604699999999998`, 0.49999999999999994`}, {23.5, 
+             0.49999999999999994`}, {2.5, 0.49999999999999994`}, {
+             1.3953100000000003`, 0.49999999999999994`}, {
+             0.49999999999999994`, 1.3953100000000003`}, {
+             0.49999999999999994`, 2.5}, {0.49999999999999994`, 23.5}, {
+             0.49999999999999994`, 24.604699999999998`}, {1.3953100000000003`,
+              25.499999999999996`}, {2.5, 25.499999999999996`}, {23.5, 
+             25.499999999999996`}, {24.604699999999998`, 
+             25.499999999999996`}, {25.499999999999996`, 
+             24.604699999999998`}, {25.499999999999996`, 23.5}, {
+             25.499999999999996`, 2.5}}}]}, 
+           {RGBColor[0.699951, 0.699951, 0.699951], Opacity[1.], 
+            JoinForm[{ElisionsDump`Miter, 10.}], 
+            JoinedCurveBox[{{{1, 4, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 0}, {1, 
+             3, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 0}}}, {{{25.499999999999996`,
+              2.5}, {25.499999999999996`, 1.3953100000000003`}, {
+             24.604699999999998`, 0.49999999999999994`}, {23.5, 
+             0.49999999999999994`}, {2.5, 0.49999999999999994`}, {
+             1.3953100000000003`, 0.49999999999999994`}, {
+             0.49999999999999994`, 1.3953100000000003`}, {
+             0.49999999999999994`, 2.5}, {0.49999999999999994`, 23.5}, {
+             0.49999999999999994`, 24.604699999999998`}, {1.3953100000000003`,
+              25.499999999999996`}, {2.5, 25.499999999999996`}, {23.5, 
+             25.499999999999996`}, {24.604699999999998`, 
+             25.499999999999996`}, {25.499999999999996`, 
+             24.604699999999998`}, {25.499999999999996`, 23.5}, {
+             25.499999999999996`, 2.5}}}]}, 
+           {FaceForm[{RGBColor[0.5, 0.5, 0.5], Opacity[1.]}], 
+            FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {0, 
+             1, 0}, {1, 3, 3}, {1, 3, 3}}}, {{{3.52539, 
+             1.0035199999999997`}, {2.5250000000000004`, 
+             1.0035199999999997`}, {1.6828099999999997`, 
+             1.0035199999999997`}, {0.9999999999999999, 
+             1.6863299999999997`}, {0.9999999999999999, 
+             2.5285199999999994`}, {0.9999999999999999, 
+             23.474999999999998`}, {0.9999999999999999, 
+             24.317199999999996`}, {1.6828099999999997`, 
+             24.999999999999996`}, {2.5250000000000004`, 
+             24.999999999999996`}, {3.52539, 24.999999999999996`}, {3.52539, 
+             24.999999999999993`}, {5.523440000000001, 22.421099999999996`}, {
+             5.523440000000001, 13.0039}, {5.523440000000001, 
+             3.5867199999999992`}, {3.52539, 1.0035199999999997`}, {3.52539, 
+             1.0035199999999997`}}}], 
+            FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 
+             1, 0}, {0, 1, 0}}}, {{{22.4977, 12.9016}, {17.740599999999997`, 
+             16.8398}, {17.740599999999997`, 14.856599999999998`}, {
+             19.980900000000002`, 12.947299999999997`}, {17.740599999999997`, 
+             10.946100000000001`}, {17.740599999999997`, 8.96289}, {22.4977, 
+             12.9016}}}]}, 
+           {FaceForm[{RGBColor[
+            0.46093800000000007`, 0.46093800000000007`, 0.46093800000000007`],
+             Opacity[1.]}], 
+            FilledCurveBox[{{{1, 4, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}}}, {{{
+             9.202339999999998, 12.8969}, {9.202339999999998, 
+             12.335499999999998`}, {8.747660000000002, 11.880899999999999`}, {
+             8.186329999999998, 11.880899999999999`}, {7.624999999999999, 
+             11.880899999999999`}, {7.169920000000001, 12.335499999999998`}, {
+             7.169920000000001, 12.8969}, {7.169920000000001, 
+             13.458200000000003`}, {7.624999999999999, 13.9133}, {
+             8.186329999999998, 13.9133}, {8.747660000000002, 13.9133}, {
+             9.202339999999998, 13.458200000000003`}, {9.202339999999998, 
+             12.8969}}}], 
+            FilledCurveBox[{{{1, 4, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}}}, {{{
+             12.6227, 12.8969}, {12.6227, 12.335499999999998`}, {
+             12.167599999999998`, 11.880899999999999`}, {11.606200000000001`, 
+             11.880899999999999`}, {11.0449, 11.880899999999999`}, {
+             10.589799999999999`, 12.335499999999998`}, {10.589799999999999`, 
+             12.8969}, {10.589799999999999`, 13.458200000000003`}, {11.0449, 
+             13.9133}, {11.606200000000001`, 13.9133}, {12.167599999999998`, 
+             13.9133}, {12.6227, 13.458200000000003`}, {12.6227, 12.8969}}}], 
+            FilledCurveBox[{{{1, 4, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}}}, {{{
+             16.042600000000004`, 12.8969}, {16.042600000000004`, 
+             12.335499999999998`}, {15.587499999999999`, 
+             11.880899999999999`}, {15.026199999999998`, 
+             11.880899999999999`}, {14.464799999999997`, 
+             11.880899999999999`}, {14.010199999999998`, 
+             12.335499999999998`}, {14.010199999999998`, 12.8969}, {
+             14.010199999999998`, 13.458200000000003`}, {14.464799999999997`, 
+             13.9133}, {15.026199999999998`, 13.9133}, {15.587499999999999`, 
+             13.9133}, {16.042600000000004`, 13.458200000000003`}, {
+             16.042600000000004`, 12.8969}}}]}},
+          AspectRatio->1,
+          Axes->False,
+          Background->GrayLevel[0.5],
+          Frame->True,
+          FrameStyle->Directive[
+            Thickness[Tiny], 
+            GrayLevel[0.7]],
+          FrameTicks->None,
+          ImageSize->{Automatic, 
+            Dynamic[
+            3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+              Magnification])]}], GridBox[{
+           {
+            RowBox[{
+             TagBox["\<\"Name: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox[
+              
+              PaneBox["\<\"C:\\\\Users\\\\2moro\\\\Dropbox\\\\archive\\\\New \
+folder\\\\Pacsite1\\\\PacletSite.m\"\>",
+               BaselinePosition->Baseline,
+               ContentPadding->False,
+               FrameMargins->0,
+               ImageSize->{{1, 500}, Automatic},
+               StripOnInput->True],
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Unique ID: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox["3",
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Binary: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox["False",
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Open: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox[
+              DynamicBox[ToBoxes[Options[
+                  OutputStream[
+                  "C:\\Users\\2moro\\Dropbox\\archive\\New \
+folder\\Pacsite1\\PacletSite.m", 3]] =!= {}, StandardForm],
+               UpdateInterval->1],
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Encoding: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox["\<\"UTF8\"\>",
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Format: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox["InputForm",
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Page width: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox["78",
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Number marks: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox["Automatic",
+              "SummaryItem"]}]}
+          },
+          AutoDelete->False,
+          
+          BaseStyle->{
+           ShowStringCharacters -> False, NumberMarks -> False, 
+            PrintPrecision -> 3, ShowSyntaxStyles -> False},
+          GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Automatic}}},
+          
+          GridBoxItemSize->{
+           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+          GridBoxSpacings->{"Columns" -> {{2}}, "Rows" -> {{Automatic}}}]}
+       },
+       AutoDelete->False,
+       BaselinePosition->{1, 1},
+       GridBoxAlignment->{"Rows" -> {{Top}}},
+       GridBoxItemSize->{
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}]}, Dynamic[
+      Typeset`open$$],
+      ImageSize->Automatic],
+     BaselinePosition->Baseline],
+    DynamicModuleValues:>{}], "]"}],
+  OutputStream[
+  "C:\\Users\\2moro\\Dropbox\\archive\\New folder\\Pacsite1\\PacletSite.m", 3],
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{{3.688704043902418*^9, 3.6887040834613314`*^9}, 
+   3.688704155931271*^9, 3.688782321461545*^9, 3.6887878433580875`*^9}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\2moro\\\\Dropbox\\\\archive\\\\New \
+folder\\\\Pacsite1\\\\PacletSite.m\"\>"], "Output",
+ CellChangeTimes->{{3.688704043902418*^9, 3.6887040834613314`*^9}, 
+   3.688704155931271*^9, 3.688782321461545*^9, 3.6887878433625917`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Create an Archive", "Subsubsection",
+ CellChangeTimes->{{3.6889242146007504`*^9, 3.6889242268162484`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"zip", "=", 
+  RowBox[{"CreateArchive", "[", 
+   RowBox[{"newfile", ",", 
+    RowBox[{"FileNameDrop", "[", 
+     RowBox[{"newfile", ",", 
+      RowBox[{"-", "1"}]}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6887041010243855`*^9, 3.688704127075723*^9}, {
+   3.688704211132206*^9, 3.688704212003126*^9}, 3.6887043489399786`*^9, 
+   3.6887047295669622`*^9, {3.68878788670848*^9, 3.688787901498928*^9}, {
+   3.688787937571707*^9, 3.6887879584990253`*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\2moro\\\\Dropbox\\\\archive\\\\New \
+folder\\\\Pacsite1\\\\PacletSite.m.zip\"\>"], "Output",
+ CellChangeTimes->{3.688704730326148*^9, 3.6887047677763157`*^9, 
+  3.68870482269785*^9, 3.688787852196714*^9, 3.6887879049511375`*^9, 
+  3.688787960115184*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["And rename it", "Subsubsection",
+ CellChangeTimes->{{3.6889242382886286`*^9, 3.6889242411686893`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ziprename", "=", 
+  RowBox[{"CopyFile", "[", 
+   RowBox[{"zip", ",", 
+    RowBox[{"FileNameJoin", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"FileNameDrop", "[", 
+        RowBox[{"zip", ",", 
+         RowBox[{"-", "1"}]}], "]"}], ",", "\"\<PacletSite.mz\>\""}], "}"}], 
+     "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6887042260799904`*^9, 3.688704229362444*^9}, {
+  3.688704494775905*^9, 3.6887045444574676`*^9}, {3.688704689310857*^9, 
+  3.688704701087717*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\2moro\\\\Dropbox\\\\archive\\\\New \
+folder\\\\Pacsite1\\\\PacletSite.mz\"\>"], "Output",
+ CellChangeTimes->{3.688704708859485*^9, 3.688704837056452*^9, 
+  3.6887879761736364`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Checking .mz", "Subsection",
+ CellChangeTimes->{{3.688704955460187*^9, 3.6887049719943347`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FromCharacterCode", "[", 
+  RowBox[{"PacletManager`ZipGetFile", "[", 
+   RowBox[{"ziprename", ",", "\"\<PacletSite.m\>\""}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.688705004506954*^9, 3.688705028834381*^9}}],
+
+Cell[BoxData["\<\"PacletSite[Paclet[\\\"Name\\\" -> \\\"diyPaclet\\\", \
+\\\"Version\\\" -> \\\"0.0.1\\\", \\\"MathematicaVersion\\\" -> \\\"7+\\\", \
+\\\"Creator\\\" -> \\\"ERWS\\\", \\\"Loading\\\" -> \\\"Automatic\\\", \
+\\\"Root\\\" -> \\\"diyPaclet\\\", \\\"Extensions\\\" -> {{\\\"Kernel\\\", \\\
+\"Context\\\" -> \\\"diyPaclet`\\\"}, {\\\"Documentation\\\", \
+\\\"Language\\\" -> \\\"English\\\", \\\"MainPage\\\" -> \
+\\\"Guides/diyPacletGuide\\\"}}, \\\"Location\\\" -> \
+\\\"https://github.com/ERWS/diyPaclet/releases/download/v1.0/\\\"]]\"\>"], \
+"Output",
+ CellChangeTimes->{{3.6887050152495213`*^9, 3.6887050368859754`*^9}, 
+   3.6887879874945073`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Upload", "Section",
+ CellChangeTimes->{{3.688705294871006*^9, 3.6887052982471447`*^9}}],
+
+Cell["\<\
+Upload the .mz file to your site. If you are able to use a http site instead \
+and can create a sub-directory /Paclets and then put your  paclet files in it \
+you could finish at this stage. Paclet Install and other useful functionality \
+should work.I want to use a GitHub release page so I need to use https and I \
+also can\[CloseCurlyQuote]t create a sub-directory at this location so a \
+slight modification of code is need for this.\
+\>", "Text",
+ CellChangeTimes->{{3.688932655259276*^9, 3.688932675627*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"mysetLocation", "[", 
+      RowBox[{
+       RowBox[{"paclets", ":", 
+        RowBox[{"{", "___PacletManager`Pacletpaclets", "}"}]}], ",", " ", 
+       InterpretationBox["location_String",
+        Pattern[PacletManager`Paclet`Private`location, 
+         Blank[String]]]}], "]"}], ":=", " ", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"mysetLocation", "[", 
+         RowBox[{"#", ",", " ", "location"}], "]"}], "&"}], ",", " ", 
+       "paclets"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"mysetLocation", "[", 
+      RowBox[{"paclet_", ",", "loaction_String"}], "]"}], ":=", " ", 
+     RowBox[{
+      RowBox[{"Function", "[", "\n", "\t", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"SameQ", "[", 
+          RowBox[{
+           RowBox[{
+            
+            TemplateBox[{
+             "PacletManager`Package`getPIValue",StyleBox["getPIValue", 
+               RGBColor[0.5, 0.5, 0.5], Underlined],DynamicBox[
+               ToBoxes[
+                
+                GeneralUtilities`Debugging`PackagePrivate`\
+makeFunctionTooltipBoxes["PacletManager`Package`getPIValue"]]]},
+             "HyperlinkedDefinitionSymbol",
+             DisplayFunction->(TagBox[
+               TagBox[
+                TooltipBox[#2, 
+                 
+                 StyleBox[#3, FontColor -> RGBColor[0, 0, 0], FontFamily -> 
+                  "Courier", FontWeight -> Bold], TooltipDelay -> 0.4], 
+                
+                EventHandlerTag[{
+                 "MouseClicked" :> 
+                  GeneralUtilities`PrintDefinitionsLocal[#]}]], 
+               MouseAppearanceTag["LinkHand"]]& ),
+             Editable->False,
+             InterpretationFunction->(#& )], "[", 
+            RowBox[{"paclet", ",", " ", "\"\<Location\>\""}], "]"}], ",", " ",
+            "Null"}], "]"}], ",", "\n", "\t\t", 
+         RowBox[{"Append", "[", 
+          RowBox[{"paclet", ",", " ", 
+           RowBox[{"\"\<Location\>\"", " ", "\[Rule]", " ", "#"}]}], "]"}], 
+         ",", "\n", "\t\t", 
+         RowBox[{"ReplaceAll", "[", 
+          RowBox[{"paclet", ",", " ", 
+           RowBox[{
+            RowBox[{"Rule", "[", 
+             RowBox[{"\"\<Location\>\"", ",", " ", "_"}], "]"}], " ", 
+            "\[RuleDelayed]", " ", 
+            RowBox[{"(", 
+             RowBox[{"\"\<Location\>\"", " ", "\[Rule]", " ", "#"}], 
+             ")"}]}]}], "]"}]}], "]"}], "\n", "]"}], "[", "\n", "\t", 
+      RowBox[{"If", "[", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{"Or", "[", 
+         RowBox[{
+          RowBox[{"StringMatchQ", "[", 
+           RowBox[{"loaction", ",", " ", "\"\<http:*\>\"", ",", " ", 
+            RowBox[{"IgnoreCase", " ", "\[Rule]", " ", "True"}]}], "]"}], ",",
+           "\n", "\t\t\t", 
+          RowBox[{"StringMatchQ", "[", 
+           RowBox[{"loaction", ",", " ", "\"\<file:*\>\"", ",", " ", 
+            RowBox[{"IgnoreCase", " ", "\[Rule]", " ", "True"}]}], "]"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"(*", 
+           RowBox[{"Change1", " ", "Added", " ", "https"}], "*)"}], 
+          "\[IndentingNewLine]", "          ", ",", 
+          RowBox[{"StringMatchQ", "[", 
+           RowBox[{"loaction", ",", "\"\<https:*\>\"", ",", " ", 
+            RowBox[{"IgnoreCase", " ", "\[Rule]", " ", "True"}]}], "]"}]}], 
+         "\n", "\t\t", "]"}], ",", "\n", "\t\t", "loaction", ",", " ", 
+        RowBox[{"ExpandFileName", " ", "@", " ", "loaction"}]}], "\n", "\t", 
+       "]"}], "\n", "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.6888527724527826`*^9, 3.688852797332282*^9}, {
+  3.688855759121196*^9, 3.688855952133418*^9}, {3.688856067276911*^9, 
+  3.688856087053508*^9}, {3.688856135463441*^9, 3.688856167796195*^9}, {
+  3.688870884455577*^9, 3.688870886634823*^9}, {3.6888792157104473`*^9, 
+  3.6888792238390107`*^9}, {3.688924755324494*^9, 3.688924762634112*^9}, {
+  3.6889249326678514`*^9, 3.6889249423389287`*^9}, {3.6889314175724993`*^9, 
+  3.688931418108432*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"mydownloadpaclet", "[", 
+    RowBox[{"remotePaclet_PacletManager`Paclet", ",", " ", 
+     RowBox[{"Optional", "[", 
+      RowBox[{
+       RowBox[{"async", ":", 
+        RowBox[{"True", " ", "|", " ", "False"}]}], ",", "False"}], "]"}], 
+     ",", " ", 
+     RowBox[{"OptionsPattern", "[", "]"}]}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", "\t", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "loc", ",", " ", "downloadTask", ",", " ", "pacletFileName", ",", " ", 
+       "downloadedFileName", ",", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Change", " ", "2", " ", "for", " ", "GitHub", " ", "as", " ", 
+         "Paclet", " ", "is", " ", "not", " ", "in", " ", "subdirectory"}], 
+        "*)"}], 
+       RowBox[{"$PacletSitePacletSubDirectory", "=", "\"\<\>\""}]}], "}"}], 
+     ",", "\n", "\t", 
+     RowBox[{
+      RowBox[{"loc", " ", "=", " ", 
+       RowBox[{
+        TemplateBox[{
+         "PacletManager`Package`PgetLocation",StyleBox["PgetLocation", 
+           RGBColor[0.5, 0.5, 0.5], Underlined],DynamicBox[
+           ToBoxes[
+            
+            GeneralUtilities`Debugging`PackagePrivate`\
+makeFunctionTooltipBoxes["PacletManager`Package`PgetLocation"]]]},
+         "HyperlinkedDefinitionSymbol",
+         DisplayFunction->(TagBox[
+           TagBox[
+            TooltipBox[#2, 
+             
+             StyleBox[#3, FontColor -> RGBColor[0, 0, 0], FontFamily -> 
+              "Courier", FontWeight -> Bold], TooltipDelay -> 0.4], 
+            
+            EventHandlerTag[{
+             "MouseClicked" :> GeneralUtilities`PrintDefinitionsLocal[#]}]], 
+           MouseAppearanceTag["LinkHand"]]& ),
+         Editable->False,
+         InterpretationFunction->(#& )], " ", "@", " ", "remotePaclet"}]}], 
+      ";", "\n", "\t", 
+      RowBox[{"pacletFileName", " ", "=", " ", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{
+          
+          TemplateBox[{
+           "PacletManager`Package`PgetQualifiedName",StyleBox[
+            "PgetQualifiedName", 
+             RGBColor[0.5, 0.5, 0.5], Underlined],DynamicBox[
+             ToBoxes[
+              
+              GeneralUtilities`Debugging`PackagePrivate`\
+makeFunctionTooltipBoxes["PacletManager`Package`PgetQualifiedName"]]]},
+           "HyperlinkedDefinitionSymbol",
+           DisplayFunction->(TagBox[
+             TagBox[
+              TooltipBox[#2, 
+               
+               StyleBox[#3, FontColor -> RGBColor[0, 0, 0], FontFamily -> 
+                "Courier", FontWeight -> Bold], TooltipDelay -> 0.4], 
+              
+              EventHandlerTag[{
+               "MouseClicked" :> GeneralUtilities`PrintDefinitionsLocal[#]}]], 
+             MouseAppearanceTag["LinkHand"]]& ),
+           Editable->False,
+           InterpretationFunction->(#& )], " ", "@", " ", "remotePaclet"}], 
+         ",", " ", "\"\<.paclet\>\""}], "]"}]}], ";", "\n", "\t", 
+      RowBox[{"downloadedFileName", " ", "=", " ", 
+       RowBox[{"ToFileName", "[", 
+        RowBox[{
+         TemplateBox[{
+          "PacletManager`Package`$userTemporaryDir",StyleBox[
+           "$userTemporaryDir", 
+            RGBColor[0.5, 0.5, 0.5], Underlined],DynamicBox[
+            ToBoxes[
+             
+             GeneralUtilities`Debugging`PackagePrivate`\
+makeFunctionTooltipBoxes["PacletManager`Package`$userTemporaryDir"]]]},
+          "HyperlinkedDefinitionSymbol",
+          DisplayFunction->(TagBox[
+            TagBox[
+             TooltipBox[#2, 
+              
+              StyleBox[#3, FontColor -> RGBColor[0, 0, 0], FontFamily -> 
+               "Courier", FontWeight -> Bold], TooltipDelay -> 0.4], 
+             
+             EventHandlerTag[{
+              "MouseClicked" :> GeneralUtilities`PrintDefinitionsLocal[#]}]], 
+            MouseAppearanceTag["LinkHand"]]& ),
+          Editable->False,
+          InterpretationFunction->(#& )], ",", "\n", "\t\t", 
+         RowBox[{"StringJoin", "[", 
+          RowBox[{
+           RowBox[{
+            
+            TemplateBox[{
+             "PacletManager`Package`PgetQualifiedName",StyleBox[
+              "PgetQualifiedName", 
+               RGBColor[0.5, 0.5, 0.5], Underlined],DynamicBox[
+               ToBoxes[
+                
+                GeneralUtilities`Debugging`PackagePrivate`\
+makeFunctionTooltipBoxes["PacletManager`Package`PgetQualifiedName"]]]},
+             "HyperlinkedDefinitionSymbol",
+             DisplayFunction->(TagBox[
+               TagBox[
+                TooltipBox[#2, 
+                 
+                 StyleBox[#3, FontColor -> RGBColor[0, 0, 0], FontFamily -> 
+                  "Courier", FontWeight -> Bold], TooltipDelay -> 0.4], 
+                
+                EventHandlerTag[{
+                 "MouseClicked" :> 
+                  GeneralUtilities`PrintDefinitionsLocal[#]}]], 
+               MouseAppearanceTag["LinkHand"]]& ),
+             Editable->False,
+             InterpretationFunction->(#& )], " ", "@", " ", "remotePaclet"}], 
+           ",", "\n", "\t\t\t", 
+           RowBox[{"ToString", " ", "@", " ", "$ProcessID"}], ",", "\n", 
+           "\t\t\t", 
+           RowBox[{"ToString", " ", "@", " ", 
+            RowBox[{"Random", "[", 
+             RowBox[{"Integer", ",", " ", 
+              RowBox[{"{", 
+               RowBox[{"1", ",", " ", "1000"}], "}"}]}], "]"}]}], ",", "\n", 
+           "\t\t\t", "\"\<.paclet\>\""}], "]"}]}], "]"}]}], ";", "\n", "\t", 
+      RowBox[{"If", "[", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{"Or", "[", 
+         RowBox[{
+          RowBox[{"StringMatchQ", "[", 
+           RowBox[{"loc", ",", " ", "\"\<http:*\>\"", ",", " ", 
+            RowBox[{"IgnoreCase", " ", "\[Rule]", " ", "True"}]}], "]"}], ",",
+           "\n", "\t\t\t", 
+          RowBox[{"StringMatchQ", "[", 
+           RowBox[{"loc", ",", " ", "\"\<file:*\>\"", ",", " ", 
+            RowBox[{"IgnoreCase", " ", "\[Rule]", " ", "True"}]}], "]"}], ",",
+           "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+           "Change", " ", "1", " ", "again", " ", "Added", " ", "https"}], 
+           "*)"}], "\[IndentingNewLine]", 
+          RowBox[{"StringMatchQ", "[", 
+           RowBox[{"loc", ",", " ", "\"\<https:*\>\"", ",", " ", 
+            RowBox[{"IgnoreCase", " ", "\[Rule]", " ", "True"}]}], "]"}]}], 
+         "\n", "\t\t", "]"}], ",", "\n", "\t\t", 
+        RowBox[{"If", "[", 
+         RowBox[{"async", ",", 
+          RowBox[{"(*", 
+           RowBox[{
+           "Code", " ", "removed", " ", "but", " ", "I", " ", "could", " ", 
+            "have", "  ", "it", " ", 
+            RowBox[{"in", ".", " ", "This"}], " ", "code", " ", "is", " ", 
+            "not", " ", "using", " ", "an", " ", "asynchronous", " ", "task", 
+            " ", "so", "  ", "$Failed", " ", "is", " ", "returned", " ", 
+            "instead"}], "*)"}], "\n", "\t\t\t", 
+          RowBox[{"$Failed", ";"}], "\n", "\t\t\t", ",", "\n", "\t\t\t", 
+          RowBox[{"URLSave", "[", 
+           RowBox[{
+            RowBox[{"StringJoin", "[", 
+             RowBox[{"loc", ",", 
+              RowBox[{"(*", "Change1", "*)"}], 
+              "$PacletSitePacletSubDirectory", ",", " ", "pacletFileName"}], 
+             "]"}], ",", "\n", "\t\t\t\t", 
+            RowBox[{"ToFileName", "[", 
+             RowBox[{
+              
+              TemplateBox[{
+               "PacletManager`Package`$userTemporaryDir",StyleBox[
+                "$userTemporaryDir", 
+                 RGBColor[0.5, 0.5, 0.5], Underlined],DynamicBox[
+                 ToBoxes[
+                  
+                  GeneralUtilities`Debugging`PackagePrivate`\
+makeFunctionTooltipBoxes["PacletManager`Package`$userTemporaryDir"]]]},
+               "HyperlinkedDefinitionSymbol",
+               DisplayFunction->(TagBox[
+                 TagBox[
+                  TooltipBox[#2, 
+                   
+                   StyleBox[#3, FontColor -> RGBColor[0, 0, 0], FontFamily -> 
+                    "Courier", FontWeight -> Bold], TooltipDelay -> 0.4], 
+                  
+                  EventHandlerTag[{
+                   "MouseClicked" :> 
+                    GeneralUtilities`PrintDefinitionsLocal[#]}]], 
+                 MouseAppearanceTag["LinkHand"]]& ),
+               Editable->False,
+               InterpretationFunction->(#& )], ",", " ", "pacletFileName"}], 
+             "]"}], ",", "\n", "\t\t\t\t", 
+            RowBox[{"\"\<UserAgent\>\"", " ", "\[Rule]", " ", 
+             
+             TemplateBox[{
+              "PacletManager`Package`$userAgent",StyleBox["$userAgent", 
+                RGBColor[0.5, 0.5, 0.5], Underlined],DynamicBox[
+                ToBoxes[
+                 
+                 GeneralUtilities`Debugging`PackagePrivate`\
+makeFunctionTooltipBoxes["PacletManager`Package`$userAgent"]]]},
+              "HyperlinkedDefinitionSymbol",
+              DisplayFunction->(TagBox[
+                TagBox[
+                 TooltipBox[#2, 
+                  
+                  StyleBox[#3, FontColor -> RGBColor[0, 0, 0], FontFamily -> 
+                   "Courier", FontWeight -> Bold], TooltipDelay -> 0.4], 
+                 
+                 EventHandlerTag[{
+                  "MouseClicked" :> 
+                   GeneralUtilities`PrintDefinitionsLocal[#]}]], 
+                MouseAppearanceTag["LinkHand"]]& ),
+              Editable->False,
+              InterpretationFunction->(#& )]}], ",", " ", 
+            RowBox[{"BinaryFormat", " ", "\[Rule]", " ", "True"}]}], "\n", 
+           "\t\t\t", "]"}]}], "\n", "\t\t", "]"}], ",", "\n", "\t\t", 
+        "$Failed"}], "\n", "\t", "]"}]}]}], "\n", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{
+  3.688877494593996*^9, {3.688877980950659*^9, 3.6888780403063717`*^9}, {
+   3.6888780706413403`*^9, 3.688878074311085*^9}, {3.6888781184683113`*^9, 
+   3.688878312186033*^9}, 3.6888784352728276`*^9, {3.6888789320148554`*^9, 
+   3.68887893324477*^9}, {3.6888791062490463`*^9, 3.6888791195952377`*^9}, {
+   3.688879153865795*^9, 3.6888792274731507`*^9}, {3.688879258794098*^9, 
+   3.688879296233452*^9}, {3.688879476032794*^9, 3.688879476470685*^9}, {
+   3.6889249474908533`*^9, 3.6889249945931425`*^9}, {3.6889250639328957`*^9, 
+   3.688925092000396*^9}, {3.6889287424427104`*^9, 3.688928765649637*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Install", "Section",
+ CellChangeTimes->{{3.688925761777459*^9, 3.688925763321138*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<GeneralUtilities`\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.6889279119476423`*^9, 3.688927929004939*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "PacletInstall", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\<\"IgnoreVersion\"\>", "\[Rule]", "False"}], ",", 
+   RowBox[{"\<\"DeletePacletFile\"\>", "\[Rule]", "False"}], ",", 
+   RowBox[{"\<\"Site\"\>", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"\<\"UpdateSites\"\>", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"\<\"Asynchronous\"\>", "\[Rule]", "False"}], ",", 
+   RowBox[{"\<\"CompletionFunction\"\>", "\[Rule]", "None"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.688927827440729*^9}]
+}, Open  ]],
+
+Cell["\<\
+Note the use of Asynchronous \[Rule]False for this hack. You can also specify \
+the site Site->\
+\>", "Text",
+ CellChangeTimes->{{3.6889257765453835`*^9, 3.6889258555370207`*^9}, {
+  3.688927796357875*^9, 3.6889278047661953`*^9}, {3.6889278448454037`*^9, 
+  3.688927873621337*^9}, {3.688928117315327*^9, 3.688928117834794*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Block", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PacletManager`Package`setLocation", "=", "mysetLocation"}], ",",
+      "\[IndentingNewLine]", 
+     RowBox[{
+     "PacletManager`Package`downloadPaclet", "=", "mydownloadpaclet"}]}], 
+    "}"}], ",", 
+   RowBox[{"PacletInstall", "[", 
+    RowBox[{"\"\<diyPaclet\>\"", ",", 
+     RowBox[{"\"\<Site\>\"", "\[Rule]", "sitepathpath"}], ",", 
+     RowBox[{"\"\<Asynchronous\>\"", " ", "\[Rule]", "False"}]}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6888745104051876`*^9, 3.688874527683688*^9}, {
+   3.688874605139425*^9, 3.6888746066756973`*^9}, {3.6888746877797775`*^9, 
+   3.688874708467928*^9}, {3.6888747387467012`*^9, 3.688874739514534*^9}, 
+   3.6888748567776585`*^9, {3.688875604100525*^9, 3.6888756089655733`*^9}, {
+   3.6888756391437745`*^9, 3.6888756411658735`*^9}, 3.6888757077262425`*^9, {
+   3.6888759453845377`*^9, 3.6888759937505064`*^9}, {3.6888760266472664`*^9, 
+   3.6888760378867664`*^9}, {3.688876167341796*^9, 3.6888761932408314`*^9}, {
+   3.688876230834132*^9, 3.6888762560121117`*^9}, 3.688878408648267*^9, {
+   3.6888786610060186`*^9, 3.688878704708123*^9}, {3.688878986856743*^9, 
+   3.6888789882089043`*^9}, {3.6889278793097854`*^9, 3.688927901095808*^9}, {
+   3.688927961570258*^9, 3.688927966757748*^9}, 3.6889280487333426`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "Paclet", "[", "\<\"diyPaclet\"\>", ",", "\<\"0.0.1\"\>", ",", "<>", "]"}],
+  PacletManager`Paclet[
+  "Name" -> "diyPaclet", "Version" -> "0.0.1", "MathematicaVersion" -> "7+", 
+   "Creator" -> "ERWS", "Loading" -> "Automatic", "Root" -> "diyPaclet", 
+   "Extensions" -> {{"Kernel", "Context" -> "diyPaclet`"}, {
+     "Documentation", "Language" -> "English", "MainPage" -> 
+      "Guides/diyPacletGuide"}}, "Location" -> 
+   "C:\\Users\\2moro\\AppData\\Roaming\\Mathematica\\Paclets\\Repository\\\
+diyPaclet"]]], "Output",
+ CellChangeTimes->{3.688878708812489*^9, 3.6888789924917583`*^9, 
+  3.688928101162112*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tear down", "Section",
+ CellChangeTimes->{{3.688879395067466*^9, 3.6888794074833193`*^9}, 
+   3.688924814458945*^9}],
+
+Cell[BoxData[
+ RowBox[{"PacletUninstall", "[", "\"\<diyPaclet\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.688879360078454*^9, 3.6888793750372257`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PacletSiteRemove", "[", 
+  "\"\<https://github.com/ERWS/diyPaclet/releases/download/v1.0/\>\"", 
+  "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"PacletSite", "[", 
+   RowBox[{"\<\"http://pacletserver.wolfram.com\"\>", 
+    ",", "\<\"Wolfram Research Paclet Server\"\>", ",", 
+    RowBox[{"\<\"Local\"\>", "\[Rule]", "False"}]}], "]"}], "}"}]], "Output",
+ CellChangeTimes->{3.688928347433426*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PacletSites", "[", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"PacletSite", "[", 
+   RowBox[{"\<\"http://pacletserver.wolfram.com\"\>", 
+    ",", "\<\"Wolfram Research Paclet Server\"\>", ",", 
+    RowBox[{"\<\"Local\"\>", "\[Rule]", "False"}]}], "]"}], "}"}]], "Output",
+ CellChangeTimes->{3.688928349763787*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1280, 637},
+WindowMargins->{{0, Automatic}, {Automatic, 60}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 103, 1, 101, "Title"],
+Cell[686, 25, 444, 8, 68, "Text"],
+Cell[CellGroupData[{
+Cell[1155, 37, 160, 2, 70, "Section"],
+Cell[CellGroupData[{
+Cell[1340, 43, 59, 1, 30, "Input"],
+Cell[1402, 46, 689, 12, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2128, 63, 181, 4, 30, "Input"],
+Cell[2312, 69, 337, 7, 21, "Message"],
+Cell[2652, 78, 506, 9, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3195, 92, 59, 1, 30, "Input"],
+Cell[3257, 95, 462, 8, 30, "Output"]
+}, Open  ]],
+Cell[3734, 106, 173, 5, 49, "Text"],
+Cell[CellGroupData[{
+Cell[3932, 115, 556, 14, 69, "Input"],
+Cell[4491, 131, 542, 12, 50, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5082, 149, 110, 1, 70, "Section"],
+Cell[CellGroupData[{
+Cell[5217, 154, 124, 1, 49, "Subsection"],
+Cell[CellGroupData[{
+Cell[5366, 159, 152, 2, 30, "Input"],
+Cell[5521, 163, 287, 6, 21, "Message"],
+Cell[5811, 171, 100, 1, 30, "Output"]
+}, Open  ]],
+Cell[5926, 175, 410, 7, 30, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6373, 187, 257, 3, 47, "Subsection"],
+Cell[6633, 192, 170, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[6828, 198, 802, 19, 74, "Input"],
+Cell[7633, 219, 233, 3, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7903, 227, 175, 2, 39, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[8103, 233, 153, 4, 30, "Input"],
+Cell[8259, 239, 1249, 27, 69, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9557, 272, 164, 2, 39, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[9746, 278, 482, 12, 30, "Input"],
+Cell[10231, 292, 1279, 27, 69, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11547, 324, 346, 6, 30, "Input"],
+Cell[11896, 332, 666, 12, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12599, 349, 275, 6, 30, "Input"],
+Cell[12877, 357, 1155, 25, 69, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14081, 388, 98, 1, 39, "Subsubsection"],
+Cell[14182, 391, 203, 3, 30, "Input"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14446, 401, 158, 2, 70, "Section"],
+Cell[CellGroupData[{
+Cell[14629, 407, 116, 1, 39, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[14770, 412, 204, 4, 30, "Input"],
+Cell[14977, 418, 661, 13, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15687, 437, 106, 1, 39, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[15818, 442, 257, 5, 30, "Input"],
+Cell[16078, 449, 663, 10, 69, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16790, 465, 145, 1, 39, "Subsubsection"],
+Cell[16938, 468, 175, 4, 30, "Text"],
+Cell[17116, 474, 676, 14, 30, "Input"],
+Cell[17795, 490, 68, 1, 30, "Input"],
+Cell[CellGroupData[{
+Cell[17888, 495, 397, 9, 69, "Input"],
+Cell[18288, 506, 17996, 364, 72, "Output"],
+Cell[36287, 872, 261, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36597, 881, 112, 1, 39, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[36734, 886, 483, 10, 30, "Input"],
+Cell[37220, 898, 286, 4, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37555, 908, 108, 1, 39, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[37688, 913, 506, 13, 30, "Input"],
+Cell[38197, 928, 213, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38459, 937, 102, 1, 49, "Subsection"],
+Cell[CellGroupData[{
+Cell[38586, 942, 238, 4, 30, "Input"],
+Cell[38827, 948, 665, 10, 69, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39553, 965, 93, 1, 70, "Section"],
+Cell[39649, 968, 525, 8, 68, "Text"],
+Cell[40177, 978, 4114, 93, 335, "Input"],
+Cell[44294, 1073, 10252, 232, 538, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[54583, 1310, 92, 1, 70, "Section"],
+Cell[54678, 1313, 150, 2, 30, "Input"],
+Cell[CellGroupData[{
+Cell[54853, 1319, 72, 1, 30, "Input"],
+Cell[54928, 1322, 485, 10, 30, "Output"]
+}, Open  ]],
+Cell[55428, 1335, 337, 6, 30, "Text"],
+Cell[CellGroupData[{
+Cell[55790, 1345, 1355, 25, 50, "Input"],
+Cell[57148, 1372, 661, 13, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[57858, 1391, 122, 2, 70, "Section"],
+Cell[57983, 1395, 152, 2, 30, "Input"],
+Cell[CellGroupData[{
+Cell[58160, 1401, 139, 3, 30, "Input"],
+Cell[58302, 1406, 290, 6, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[58629, 1417, 59, 1, 30, "Input"],
+Cell[58691, 1420, 290, 6, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
