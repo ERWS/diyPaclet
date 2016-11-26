@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10015,        426]
-NotebookOptionsPosition[      5877,        279]
-NotebookOutlinePosition[      6496,        303]
-CellTagsIndexPosition[      6418,        298]
+NotebookDataLength[      9969,        424]
+NotebookOptionsPosition[      5831,        277]
+NotebookOutlinePosition[      6450,        301]
+CellTagsIndexPosition[      6372,        296]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -207,14 +207,12 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<diyPaclet`\>\"", "]"}]], "Input",
- CellID->399137161],
+ CellID->145289786],
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"f", "[", "x_", "]"}], ":=", 
-  RowBox[{"x", "^", "2"}]}]], "Input",
- CellChangeTimes->{{3.6885838632060146`*^9, 3.688583878396261*^9}},
- CellID->149958934]
+ RowBox[{"f", "[", "4", "]"}]], "Input",
+ CellChangeTimes->{{3.6891219356752577`*^9, 3.6891219375112886`*^9}},
+ CellID->263453628]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -290,14 +288,14 @@ StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb",
 (*CellTagsOutline
 CellTagsIndex->{
  "ExtendedExamples"->{
-  Cell[4357, 221, 100, 2, 53, "ExtendedExamplesSection",
+  Cell[4311, 219, 100, 2, 53, "ExtendedExamplesSection",
    CellTags->"ExtendedExamples",
    CellID->1854448968]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"ExtendedExamples", 6280, 291}
+ {"ExtendedExamples", 6234, 289}
  }
 *)
 (*NotebookFileOutline
@@ -397,40 +395,38 @@ Cell[CellGroupData[{
 Cell[3673, 194, 356, 11, 67, "PrimaryExamplesSection",
  CellID->880084151],
 Cell[4032, 207, 95, 2, 25, "Input",
- CellID->399137161],
-Cell[4130, 211, 190, 5, 25, "Input",
- CellID->149958934]
+ CellID->145289786],
+Cell[4130, 211, 144, 3, 25, "Input",
+ CellID->263453628]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4357, 221, 100, 2, 53, "ExtendedExamplesSection",
+Cell[4311, 219, 100, 2, 53, "ExtendedExamplesSection",
  CellTags->"ExtendedExamples",
  CellID->1854448968],
-Cell[4460, 225, 125, 3, 31, "ExampleSection",
+Cell[4414, 223, 125, 3, 31, "ExampleSection",
  CellID->1293636265],
-Cell[4588, 230, 148, 3, 19, "ExampleSection",
+Cell[4542, 228, 148, 3, 19, "ExampleSection",
  CellID->1020263627],
 Cell[CellGroupData[{
-Cell[4761, 237, 127, 3, 19, "ExampleSection",
+Cell[4715, 235, 127, 3, 19, "ExampleSection",
  CellID->2061341341],
-Cell[4891, 242, 130, 3, 70, "ExampleSubsection",
+Cell[4845, 240, 130, 3, 70, "ExampleSubsection",
  CellID->1757724783],
-Cell[5024, 247, 130, 3, 70, "ExampleSubsection",
+Cell[4978, 245, 130, 3, 70, "ExampleSubsection",
  CellID->1295379749]
 }, Closed]],
-Cell[5169, 253, 131, 3, 19, "ExampleSection",
+Cell[5123, 251, 131, 3, 19, "ExampleSection",
  CellID->258228157],
-Cell[5303, 258, 142, 3, 19, "ExampleSection",
+Cell[5257, 256, 142, 3, 19, "ExampleSection",
  CellID->2123667759],
-Cell[5448, 263, 135, 3, 19, "ExampleSection",
+Cell[5402, 261, 135, 3, 19, "ExampleSection",
  CellID->1305812373],
-Cell[5586, 268, 140, 3, 19, "ExampleSection",
+Cell[5540, 266, 140, 3, 19, "ExampleSection",
  CellID->1653164318],
-Cell[5729, 273, 132, 3, 19, "ExampleSection",
+Cell[5683, 271, 132, 3, 19, "ExampleSection",
  CellID->589267740]
 }, Open  ]]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
